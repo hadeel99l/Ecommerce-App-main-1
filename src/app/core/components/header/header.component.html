@@ -1,0 +1,40 @@
+<!-- Html Nav Tag -->
+<nav class="bg-white shadow dark:bg-gray-900">
+    <!-- Outer Container -->
+    <div class="container px-6 py-4 mx-auto">
+        <!-- Inner Container -->
+        <div class="flex items-center justify-between">
+
+            <!--SIDE NAV BAR BUTTON Logic:
+                
+                depending on the value from the sidebarSignal, the icon for the sidebar will differ 
+            -->
+            @if (sidebarSignal.sidebarOpen()) {
+                <!-- If true aka open, show the closed icon -->
+                <mat-icon class="cursor-pointer dark:text-white" (click)="toggleSideNavSignal()">close</mat-icon>
+          
+            }
+            @else{
+                 <!-- If false show the menuicon -->
+                <mat-icon class="cursor-pointer dark:text-white" (click)="toggleSideNavSignal()">menu</mat-icon>
+            } 
+
+    
+                
+            <!-- Title -->
+            <button  (click)="navigateToProducts()" class="text-xl font-semibold text-gray-700 md:text-4xl dark:text-white">
+                Ecommerce App<span class="text-red-500">NGRX</span>
+            </button>
+            
+            <!-- Cart Button -->
+            <div>
+                <button class="text-white" (click)="navigateToCart()" routerLink='/cart' routerLinkActive="router-link-active" type="button">
+                  <span>Cart {{ (products$ | async)?.length}}</span>  
+                </button>
+            </div>            
+
+        </div>
+ 
+    </div>
+
+</nav>

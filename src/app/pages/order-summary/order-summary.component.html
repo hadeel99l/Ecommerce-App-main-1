@@ -1,0 +1,34 @@
+<p>order-summary works!</p>
+
+<!-- Will show the order summary
+Items in order / cart
+Total Price
+Shipping and payment information -->
+
+<!-- When this button is hit it will send the order summary to the api service -->
+
+<p>Name {{userName}}</p>
+<p>address {{address}}</p>
+<p>cardNumber {{cardNumber}}</p>
+
+
+@if(cartItems$){
+
+    @for (item of cartItems$ | async ; track $index) {
+        <p>title: {{item.title}}</p>
+        <p>quant: {{item.quantity}}</p>
+    }
+
+}
+
+@if (totalPrice$) {
+
+    <p>Total Price: {{(totalPrice$ | async) | currency}}</p>
+
+    
+}
+
+
+
+<button class="p-2 font-semibold bg-yellow-300 shadow  rounded-xl"> Confirm Order </button>
+

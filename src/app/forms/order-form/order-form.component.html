@@ -1,0 +1,55 @@
+<p>shipping-form works!</p>
+
+
+<form [formGroup]="orderFormGroup" (ngSubmit)="onSubmit()">
+
+    <h3 class="my-2 text-2xl">Please Enter Shipping Information</h3>
+    <div class="mb-3 row">
+        <div class="col">
+            <div>
+                <label class="form-label">Name</label>
+                <input class="form-control" type="string" formControlName="name">
+        
+                <!-- Validation Message -->
+                <small class="text-red-500" *ngIf="orderFormGroup.get('name')?.invalid && orderFormGroup.get('name')?.touched">
+                    Name is required
+                </small>
+            </div>
+            
+        </div>
+        <div class="col">
+            <div>
+                <label class="form-label">Address</label>
+                <input class="form-control" type="string" formControlName="address">
+                <!-- Validation Message -->
+                 <small class="text-red-500" *ngIf="orderFormGroup.get('address')?.invalid && orderFormGroup.get('address')?.touched">
+                    Address Is required
+                </small>
+            </div>
+        
+
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <div class="col">
+            <div>
+                <label class="form-label">Card Number </label>
+                <input class="form-control" type="string" formControlName="cardNumber">
+                
+                <small class="text-red-500" *ngIf="orderFormGroup.get('cardNumber')?.invalid && orderFormGroup.get('cardNumber')?.touched">
+                   Card Number is Required
+                </small>
+            </div>
+
+
+        </div>
+
+    </div>
+
+        
+    
+
+<!-- disallow submit btn if form is invalid -->
+ <button class="p-2 font-semibold bg-yellow-200 shadow rounded-xl disabled:cursor-not-allowed" type="submit" [disabled]="orderFormGroup.invalid">Submit Order</button>
+</form>
